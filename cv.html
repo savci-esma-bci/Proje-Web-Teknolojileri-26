@@ -7,13 +7,149 @@
     <title>CV</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <!--SEMANTIC TAGLAR (header section article vb. [w3schoolstan listeyi al])-->
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="home.html">Ana Sayfa</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Hakkımda</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="cv.html">CV</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sehrim.html">Şehrim</a></li>
+                    <li class="nav-item"><a class="nav-link" href="miras.html">Mirasımız</a></li>
+                    <li class="nav-item"><a class="nav-link" href="interest.html">İlgi Alanlarım</a></li>
+                    <li class="nav-item"><a class="nav-link" href="iletisim.html">İletişim</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html">Giriş</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ANA İÇERİK -->
+    <main class="container my-5">
+
+        <!-- BAZI BILGILER -->
+        <header class="text-center mb-5">
+            <h1 class="fw-bold">Esma Nur Savcı</h1>
+            <p class="text-muted">Sakarya Üniversitesi Bilgisayar Mühendisliği Öğrencisi</p>
+            <address>
+                <a href="mailto:savciesmanur@gmail.com">savciesmanur@gmail.com</a> &bull;
+                Esma S. <a href="www.linkedin.com/in/esma-nur-s-a275bb2a7">Linkedin</a> &bull;
+                Sakarya, Türkiye
+            </address>
+        </header>
+
+        <!-- HAKKIMDA -->
+        <section aria-labelledby="hakkimda-baslik" class="mb-4">
+            <h2 id="hakkimda-baslik" class="border-bottom pb-2">👤 Hakkımda</h2>
+            <p class="mt-3">
+                9 yıl önce Python ile temel projeler geliştirerek başladığım yazılım serüvenimde; 
+                oyun tasarımından web geliştirmeye kadar geniş bir yelpazede uygulama deneyimi kazandım.
+                4 yıldır sürdürdüğüm oyun tasarımı ilgime de fırsat buldukça vakit ayırıyorum.
+                Son 3 yılımı ise Beyin-Bilgisayar Arayüzleri (BCI) ve nöroteknoloji alanında 
+                projeler geliştirmeye adadım. Özellikle EEG sinyallerinin analizi, derin öğrenme algoritmaları ve 
+                giyilebilir sistem tasarımları üzerine yoğunlaştığım bu 3 yıllık süreçte, üretmeyi seven biri olarak
+                yazılım dünyasında kendimi geliştirmeye devam ediyorum.
+            </p>
+        </section>
+
+        <!-- EĞİTİM -->
+        <section aria-labelledby="egitim-baslik" class="mb-4">
+            <h2 id="egitim-baslik" class="border-bottom pb-2">🎓 Eğitim</h2>
+
+            <article class="mt-3">
+                <h5>Sakarya Üniversitesi</h5>
+                <p class="text-muted mb-1">Bilgisayar Mühendisliği &mdash; Lisans</p>
+                <time datetime="2025">2025</time> &ndash; Devam ediyor                
+            </article>
+
+            <article class="mt-3">
+                <h5>Uluslararası Pendik KAİHL</h5>
+                <p class="text-muted mb-1">Lise</p>
+                <time datetime="2022">2022</time> &ndash; <time datetime="2025">2025</time>
+                <br> (Okul Birinciliği)
+            </article>
+
+            <article class="mt-3">
+                <h5>Kadıköy KAİHL</h5>
+                <p class="text-muted mb-1">Lise</p>
+                <time datetime="2020">2020</time> &ndash; <time datetime="2022">2022</time>
+            </article>
+        </section>
+
+        <!-- PROJELER -->
+        <section aria-labelledby="projeler-baslik" class="mb-4">
+            <h2 id="projeler-baslik" class="border-bottom pb-2">📁 Projeler</h2>
+
+            <article class="mt-3">
+                <h5>Kişisel Web Sitesi (2026)</h5>
+                <p>HTML5, CSS, JS, Bootstrap5 ve PHP kullanılarak geliştirilen çok sayfalı responsive web sayfası.</p>
+                <a href="https://github.com/savci-esma-bci/Proje-Web-Teknolojileri-26" target="_blank">GitHub'da Gör &rarr;</a>
+            </article>
+
+            <article class="mt-3">
+                <h5>Beyin Dalgaları ve İzokronik Frekanslar (2023-2025)</h5>
+                <p>BioAmp EXG Pill kullanılarak geliştirilen EEG cihazı aracılığıyla, 
+                    izokronik vuruşlar kullanarak beyin dalgalarını hedeflenen 
+                    zihinsel durumlara yönlendirmeyi amaçlayan bir nöroteknoloji geribildirim (feedback) projesi.</p>
+                <a href="https://www.linkedin.com/in/esma-nur-s-a275bb2a7/details/projects/" target="_blank">LinkedIn'de Gör &rarr;</a>
+            </article>
+
+            <article class="mt-3">
+                <h5>Zihin ile Oyun Kontrolü (2022-2023)</h5>
+                <p>BCI teknolojisi aracılığıyla geliştirilen, zihinsel komutların gerçek zamanlı olarak 
+                    oyun mekaniklerine dönüştürülmesini sağlayan tam kontrollü bir RPG oyun projesi.</p>
+                <a href="https://www.linkedin.com/in/esma-nur-s-a275bb2a7/details/projects/" target="_blank">LinkedIn'de Gör &rarr;</a>
+            </article>
+
+            <article class="mt-3">
+                <h5>Sosyal Medya Klon Site (2022)</h5>
+                <p>Django kullanılarak geliştirilen; kullanıcı yönetimi (Sign Up, Log In, Password Reset etc.), içerik paylaşımları ve etkileşim özelliklerini barındıran bir sosyal medya klon sayfası.</p>
+                <a href="https://github.com/savci-esma-bci/Django_Social_Web" target="_blank">GitHub'da Gör &rarr;</a>
+            </article>
+        </section>
+
+        <!-- BECERİLER -->
+        <section aria-labelledby="beceriler-baslik" class="mb-4">
+            <h2 id="beceriler-baslik" class="border-bottom pb-2">🛠️ Beceriler</h2>
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <h6>Bilgisayar Becerileri</h6>
+                    <ul>
+                        <li>Python</li>
+                        <li>Beyin-Bilgisayar Arayüzü Teknolojileri (BCI)</li>
+                        <li>Deep Learning</li>
+                        <li>C</li>
+                        <li>C#</li>                        
+                    </ul>
+                </div>
+                <div class="col-md-6">                    
+                    <ul>
+                        <br>
+                        <li>Microsoft SQL Server</li>
+                        <li>Veri Analizi</li>
+                        <li>Unity</li>
+                        <li>Godot</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Esma Nur Savcı - Tüm hakları saklıdır.</p>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
-
