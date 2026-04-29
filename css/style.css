@@ -67,6 +67,47 @@ body {
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
+.city-hero {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #fff;
+            padding: 80px 0 60px;
+            text-align: center;
+}
+.city-hero h1 { font-size: 2.8rem; font-weight: 700; }
+.city-hero p  { color: #b0c4de; max-width: 620px; margin: 1rem auto 0; }
+
+.info-badge {
+    background: #1a1a2e;
+    color: #e0e0e0;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+}
+.info-badge .number { font-size: 2rem; font-weight: 700; color: #4fc3f7; }
+.info-badge .label  { font-size: 0.85rem; color: #aaa; }
+
+/* SLIDER */
+#istanbulSlider .carousel-item img {
+    height: 420px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+#istanbulSlider .carousel-caption {
+    background: rgba(0,0,0,0.5);
+    border-radius: 8px;
+    padding: 8px 16px;
+}
+
+/* KIZ KULESİ özel kart */
+.kiz-kulesi-card {
+    border-left: 5px solid #4fc3f7;
+    background: #f0f8ff;
+}
+
+/* YER KARTLARI */
+.place-card { border-radius: 12px; overflow: hidden; }
+.place-card img { height: 200px; object-fit: cover; }
+
 /* FOOTER */
 footer {
     background-color: #1a1a2e;
