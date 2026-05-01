@@ -4,15 +4,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İlgi alanları</title>
+    <title>İlgi Alanlarım – BCI</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        
+    </style>
 </head>
 
 <body>
-    <!--API cekimi [arXivAPI duzeldiyse ona bak]-->
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="home.html">Ana Sayfa</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Hakkımda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cv.html">CV</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sehrim.html">Şehrim</a></li>
+                    <li class="nav-item"><a class="nav-link" href="miras.html">Mirasımız</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="interest.html">İlgi Alanlarım</a></li>
+                    <li class="nav-item"><a class="nav-link" href="iletisim.html">İletişim</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html">Giriş</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="interest-hero">
+        <div class="container">
+            <h1>🧠 Brain Computer Interface</h1> <br> <h1>(Beyin Bilgisayar Arayüzü)</h1>
+            <p>Beyin sinyallerinin dijital çıktılara dönüştürüldüğü etkileşim protokolü</p>
+        </div>
+    </section>
+
+    <!-- BCI TANIM-->
+    <section class="py-5 bg-white">
+        <div class="container">
+            <h2 class="mb-4">BCI Nedir?</h2>
+            <div class="row align-items-center g-4">
+                <div class="col-md-6">
+                    <p>
+                        <strong>Brain-Computer Interface (BCI)</strong>, beyin ile cihazlar arasında doğrudan
+                        iletişim kuran bir teknolojidir. EEG, ECoG veya implantlar aracılığıyla toplanan sinir
+                        sinyalleri yorumlanarak bilgisayar, protez ya da çeşitli
+                        donanımların kontrolünde kullanılır.
+                    </p>
+                    <p class="mt-3">
+                        Tıbbi uygulamalardan oyun ve eğitime, askeri sistemlerden nörorehabilitasyona kadar
+                        pek çok alanda araştırmalar hız kazanmaktadır. Bu teknoloji, özellikle ALS ve felç
+                        gibi motor nöron hastalıklarına sahip bireyler için devrim niteliğinde sonuçlar
+                        doğurabilir.
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <div class="bci-card">
+                        <h5>😒İnvaziv BCI</h5>
+                        <p class="text-muted mb-0">Beyne doğrudan implant yerleştirilen yöntem. Neuralink bu alanda öncü çalışmalar yürütmektedir.</p>
+                    </div>
+                    <div class="bci-card">
+                        <h5>⭐Non-İnvaziv BCI</h5>
+                        <p class="text-muted mb-0">EEG başlığı gibi dışarıdan takılan sensörlerle çalışan, daha erişilebilir ve risksiz yöntemler.</p>
+                    </div>
+                    <div class="bci-card">
+                        <h5>Yarı-İnvaziv BCI</h5>
+                        <p class="text-muted mb-0">Kafatası içi ancak beyin yüzeyine dokunmayan elektrotlar kullanılır (ECoG).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pubmed API -->
+    <section class="py-5">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between mb-2 flex-wrap gap-2">
+                <h2 class="mb-0">Güncel BCI Araştırmaları</h2>
+                <span class="api-source-note">PubMed E-utilities API'dan canlı çekiliyor~</span>
+            </div>
+            <p class="text-muted mb-4">
+                Aşağıdaki makaleler, <strong>PubMed</strong> üzerinden gerçek zamanlı olarak çekilmektedir.
+                PubMed, biyotıp ve yaşam bilimleri alanında dünya çapındaki 
+                hakemli akademik literatürü tarayan kapsamlı bir veri tabanıdır.
+            </p>
+
+            <!-- Filtreler -->
+            <div class="d-flex gap-2 flex-wrap mb-4">
+                <button class="btn btn-sm btn-outline-secondary filter-btn active" data-query="brain computer interface">Tümü</button>
+                <button class="btn btn-sm btn-outline-secondary filter-btn" data-query="EEG motor imagery BCI">EEG / Motor Imagery</button>
+                <button class="btn btn-sm btn-outline-secondary filter-btn" data-query="neural decoding brain computer">Neural Decoding</button>
+                <button class="btn btn-sm btn-outline-secondary filter-btn" data-query="neural implant brain electrode">İmplant & Neuralink</button>
+            </div>
+
+            <!-- Spinner -->
+            <div id="loading-spinner" class="text-center py-5">
+                <div class="spinner-border text-secondary" role="status"></div>
+                <p class="mt-2 text-muted">Makaleler yükleniyor...</p>
+            </div>
+
+            <!-- Hata -->
+            <div id="error-msg" class="alert alert-warning">
+                Makaleler yüklenemedi. İnternet bağlantınızı kontrol edin.
+            </div>
+
+            <!-- KARTLARR -->
+            <div id="papers-container" class="row g-4"></div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Esma Nur Savcı - Tüm hakları saklıdır.</p>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const spinner   = document.getElementById('loading-spinner');
+        const errorMsg  = document.getElementById('error-msg');
+        const container = document.getElementById('papers-container');
+
+        async function fetchPapers(query) {
+            spinner.style.display = 'block';
+            errorMsg.style.display = 'none';
+            container.innerHTML = '';
+
+            try {
+                // Ara ve PMID listesi al
+                const searchUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=${encodeURIComponent(query)}&retmax=6&sort=date&retmode=json`;
+                const searchRes = await fetch(searchUrl);
+                if (!searchRes.ok) throw new Error('Arama hatasi');
+                const searchData = await searchRes.json();
+                const ids = searchData.esearchresult.idlist;
+
+                if (!ids || ids.length === 0) {
+                    container.innerHTML = '<p class="text-muted">Sonuç bulunamadı.</p>';
+                    return;
+                }
+
+                // PMIDlerden makale detaylarini al
+                const fetchUrl = `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=${ids.join(',')}&retmode=json`;
+                const fetchRes = await fetch(fetchUrl);
+                if (!fetchRes.ok) throw new Error('Detay hatasi');
+                const fetchData = await fetchRes.json();
+
+                ids.forEach(id => {
+                    const paper = fetchData.result[id];
+                    if (!paper) return;
+
+                    const title   = paper.title || 'Başlık yok';
+                    const authors = paper.authors
+                        ? paper.authors.slice(0, 3).map(a => a.name).join(', ') + (paper.authors.length > 3 ? ' ve diğerleri' : '')
+                        : 'Yazar bilgisi yok';
+                    const journal = paper.source || '';
+                    const year    = paper.pubdate ? paper.pubdate.substring(0, 4) : '';
+                    const link    = `https://pubmed.ncbi.nlm.nih.gov/${id}/`;
+
+                    const col = document.createElement('div');
+                    col.className = 'col-md-6 col-lg-4';
+                    col.innerHTML = `
+                        <div class="card paper-card">
+                            <div class="card-body">
+                                <div class="mb-2"><span class="badge-api">PubMed</span></div>
+                                <h6 class="card-title">${title}</h6>
+                                <p class="authors">✍️ ${authors}</p>
+                                <p class="abstract text-muted">${journal}</p>
+                            </div>
+                            <div class="card-footer d-flex justify-content-between align-items-center">
+                                <small class="text-muted">📅 ${year}</small>
+                                <a href="${link}" target="_blank" class="btn btn-sm btn-outline-secondary">Makaleye Git →</a>
+                            </div>
+                        </div>`;
+                    container.appendChild(col);
+                });
+
+            } catch (e) {
+                console.error(e);
+                errorMsg.style.display = 'block';
+            } finally {
+                spinner.style.display = 'none';
+            }
+        }
+
+        // Filtre butonlari
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                fetchPapers(btn.dataset.query);
+            });
+        });
+
+        // sayfa acilinca yukle
+        fetchPapers('brain computer interface');
+    </script>
 </body>
 
 </html>

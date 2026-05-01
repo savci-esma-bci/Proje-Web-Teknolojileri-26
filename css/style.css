@@ -162,6 +162,75 @@ body {
 }
 .timeline-item h6 { font-weight: 700; margin-bottom: 4px; }
 
+.interest-hero {
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: #fff;
+    padding: 80px 0 60px;
+    text-align: center;
+}
+.interest-hero h1 { font-size: 2.6rem; font-weight: 700; }
+.interest-hero p  { color: #c0b8f0; max-width: 640px; margin: 1rem auto 0; }
+
+.bci-card {
+    border: none;
+    border-radius: 12px;
+    background: #f4f0ff;
+    border-left: 5px solid #7c4dff;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+}
+.bci-card h5 { color: #4a148c; }
+
+/* API MAKALE KARTLARI */
+.paper-card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: 100%;
+}
+.paper-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.14);
+}
+.paper-card .card-body { padding: 20px; }
+.paper-card .badge-api {
+    background: #7c4dff;
+    color: #fff;
+    font-size: 0.7rem;
+    padding: 3px 8px;
+    border-radius: 20px;
+}
+.paper-card .authors {
+    font-size: 0.82rem;
+    color: #888;
+    margin: 6px 0;
+}
+.paper-card .abstract {
+    font-size: 0.88rem;
+    color: #555;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.paper-card .card-footer {
+    background: transparent;
+    border-top: 1px solid #f0f0f0;
+    padding: 12px 20px;
+}
+
+#loading-spinner { display: none; }
+#error-msg { display: none; }
+
+.api-source-note {
+    background: #ede7f6;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    color: #4a148c;
+}
+
 /* FOOTER */
 footer {
     background-color: #1a1a2e;
