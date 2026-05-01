@@ -210,6 +210,7 @@ body {
     font-size: 0.88rem;
     color: #555;
     display: -webkit-box;
+    line-clamp: 4;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
