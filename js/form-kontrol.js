@@ -11,7 +11,7 @@ function formKontrol() {
     }
     if (eposta == "") {
         hata += "E-posta boş bırakılamaz.\n";
-    } else if (eposta.indexOf("@") == -1) {
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(eposta)) {
         hata += "Geçerli bir e-posta giriniz.\n";
     }
     if (telefon == "") {
@@ -39,3 +39,52 @@ function formKontrol() {
         document.getElementById("contactForm").submit();
     }
 }
+
+const { createApp } = Vue;
+createApp({
+    data() {
+        return {
+            hatalar: []
+        }
+    },
+    methods: {
+        vueKontrol() {
+            this.hatalar = [];
+
+            var adSoyad = document.getElementById("adSoyad").value;
+            var eposta = document.getElementById("eposta").value;
+            var telefon = document.getElementById("telefon").value;
+            var konu = document.getElementById("konu").value;
+            var mesaj = document.getElementById("mesaj").value;
+
+            if (adSoyad == "") {
+                this.hatalar.push("Ad soyad boş bırakılamaz.");
+            }
+            if (eposta == "") {
+                this.hatalar.push("E-posta boş bırakılamaz.");
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(eposta)) {
+                this.hatalar.push("Geçerli bir e-posta giriniz.");
+            }
+            if (telefon == "") {
+                this.hatalar.push("Telefon boş bırakılamaz.");
+            } else if (!/^\d+$/.test(telefon)) {
+                this.hatalar.push("Telefon sadece rakam içermelidir.");
+            }
+            if (konu == "") {
+                this.hatalar.push("Konu seçiniz.");
+            }
+            if (mesaj == "") {
+                this.hatalar.push("Mesaj boş bırakılamaz.");
+            }
+
+            if (this.hatalar.length === 0) {
+                document.getElementById("contactForm").submit();
+            }
+        }
+    },
+    mounted() {
+        document.getElementById("vueGonderBtn").addEventListener("click", () => {
+            this.vueKontrol();
+        });
+    }
+}).mount("#vueHatalar");
