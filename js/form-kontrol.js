@@ -1,90 +1,106 @@
-function formKontrol() {
-    var hata = "";
-    var adSoyad = document.getElementById("adSoyad").value;
-    var eposta = document.getElementById("eposta").value;
-    var telefon = document.getElementById("telefon").value;
-    var konu = document.getElementById("konu").value;
-    var mesaj = document.getElementById("mesaj").value;
+function nativeValidate() {
+    let valid = true;
 
-    if (adSoyad == "") {
-        hata += "Ad soyad boş bırakılamaz.\n";
-    }
-    if (eposta == "") {
-        hata += "E-posta boş bırakılamaz.\n";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(eposta)) {
-        hata += "Geçerli bir e-posta giriniz.\n";
-    }
-    if (telefon == "") {
-        hata += "Telefon boş bırakılamaz.\n";
-    } else {
-        for (var i = 0; i < telefon.length; i++) {
-            if (isNaN(telefon[i])) {
-                hata += "Telefon sadece rakam içermelidir.\n";
-                break;
-            }
-        }
-    }
-    if (konu == "") {
-        hata += "Konu seçiniz.\n";
-    }
-    if (mesaj == "") {
-        hata += "Mesaj boş bırakılamaz.\n";
+    document.querySelectorAll('.native-error').forEach(el => el.remove());
+    document.querySelectorAll('.is-error').forEach(el => el.classList.remove('is-error'));
+
+    function showError(fieldId, msg) {
+        const field = document.getElementById(fieldId);
+        field.classList.add('is-error');
+        const err = document.createElement('div');
+        err.className = 'error-text native-error';
+        err.textContent = msg;
+        field.parentNode.appendChild(err);
+        valid = false;
     }
 
-    if (hata != "") {
-        var div = document.getElementById("hataMesaji");
-        div.style.display = "block";
-        div.innerHTML = hata.replace(/\n/g, "<br>");
-    } else {
-        document.getElementById("contactForm").submit();
+    const adSoyad = document.getElementById('adSoyad').value.trim();
+    const eposta  = document.getElementById('eposta').value.trim();
+    const telefon = document.getElementById('telefon').value.trim();
+    const konu    = document.getElementById('konu').value;
+    const mesaj   = document.getElementById('mesaj').value.trim();
+
+    if (!adSoyad)
+        showError('adSoyad', 'Ad soyad boş bırakılamaz.');
+
+    if (!eposta)
+        showError('eposta', 'E-posta boş bırakılamaz.');
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(eposta))
+        showError('eposta', 'Geçerli bir e-posta adresi giriniz.');
+
+    if (!telefon)
+        showError('telefon', 'Telefon boş bırakılamaz.');
+    else if (!/^\d{10,11}$/.test(telefon))
+        showError('telefon', 'Telefon numarası yalnızca rakamlardan oluşmalı ve 10-11 hane olmalıdır.');
+
+    if (!konu)
+        showError('konu', 'Lütfen bir konu seçiniz.');
+
+    if (!mesaj)
+        showError('mesaj', 'Mesaj boş bırakılamaz.');
+
+    if (valid) {
+        document.getElementById('contactForm').submit();
     }
 }
 
 const { createApp } = Vue;
+
 createApp({
     data() {
         return {
-            hatalar: []
-        }
+            submitted: false,
+            form: {
+                adSoyad: '',
+                eposta: '',
+                telefon: '',
+                konu: '',
+                iletisimYontemi: 'farketmez',
+                ilgiAlanlari: [],
+                mesaj: ''
+            },
+            vueErrors: {}
+        };
     },
     methods: {
-        vueKontrol() {
-            this.hatalar = [];
+        vueValidate() {
+            this.vueErrors = {};
+            let valid = true;
 
-            var adSoyad = document.getElementById("adSoyad").value;
-            var eposta = document.getElementById("eposta").value;
-            var telefon = document.getElementById("telefon").value;
-            var konu = document.getElementById("konu").value;
-            var mesaj = document.getElementById("mesaj").value;
-
-            if (adSoyad == "") {
-                this.hatalar.push("Ad soyad boş bırakılamaz.");
-            }
-            if (eposta == "") {
-                this.hatalar.push("E-posta boş bırakılamaz.");
-            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(eposta)) {
-                this.hatalar.push("Geçerli bir e-posta giriniz.");
-            }
-            if (telefon == "") {
-                this.hatalar.push("Telefon boş bırakılamaz.");
-            } else if (!/^\d+$/.test(telefon)) {
-                this.hatalar.push("Telefon sadece rakam içermelidir.");
-            }
-            if (konu == "") {
-                this.hatalar.push("Konu seçiniz.");
-            }
-            if (mesaj == "") {
-                this.hatalar.push("Mesaj boş bırakılamaz.");
+            if (!this.form.adSoyad.trim()) {
+                this.vueErrors.adSoyad = 'Ad soyad boş bırakılamaz.';
+                valid = false;
             }
 
-            if (this.hatalar.length === 0) {
-                document.getElementById("contactForm").submit();
+            if (!this.form.eposta.trim()) {
+                this.vueErrors.eposta = 'E-posta boş bırakılamaz.';
+                valid = false;
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.form.eposta)) {
+                this.vueErrors.eposta = 'Geçerli bir e-posta adresi giriniz.';
+                valid = false;
+            }
+
+            if (!this.form.telefon.trim()) {
+                this.vueErrors.telefon = 'Telefon boş bırakılamaz.';
+                valid = false;
+            } else if (!/^\d{10,11}$/.test(this.form.telefon)) {
+                this.vueErrors.telefon = 'Telefon numarası yalnızca rakamlardan oluşmalı ve 10-11 hane olmalıdır.';
+                valid = false;
+            }
+
+            if (!this.form.konu) {
+                this.vueErrors.konu = 'Lütfen bir konu seçiniz.';
+                valid = false;
+            }
+
+            if (!this.form.mesaj.trim()) {
+                this.vueErrors.mesaj = 'Mesaj boş bırakılamaz.';
+                valid = false;
+            }
+
+            if (valid) {
+                document.getElementById('contactForm').submit();
             }
         }
-    },
-    mounted() {
-        document.getElementById("vueGonderBtn").addEventListener("click", () => {
-            this.vueKontrol();
-        });
     }
-}).mount("#vueHatalar");
+}).mount('#contactApp');

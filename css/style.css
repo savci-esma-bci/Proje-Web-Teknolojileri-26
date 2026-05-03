@@ -58,23 +58,32 @@ body {
 .card {
     border: none;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .city-hero {
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            color: #fff;
-            padding: 80px 0 60px;
-            text-align: center;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #fff;
+    padding: 80px 0 60px;
+    text-align: center;
 }
-.city-hero h1 { font-size: 2.8rem; font-weight: 700; }
-.city-hero p  { color: #b0c4de; max-width: 620px; margin: 1rem auto 0; }
+
+.city-hero h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+}
+
+.city-hero p {
+    color: #b0c4de;
+    max-width: 620px;
+    margin: 1rem auto 0;
+}
 
 .info-badge {
     background: #1a1a2e;
@@ -83,8 +92,17 @@ body {
     padding: 20px;
     text-align: center;
 }
-.info-badge .number { font-size: 2rem; font-weight: 700; color: #4fc3f7; }
-.info-badge .label  { font-size: 0.85rem; color: #aaa; }
+
+.info-badge .number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #4fc3f7;
+}
+
+.info-badge .label {
+    font-size: 0.85rem;
+    color: #aaa;
+}
 
 /* SLIDER */
 #istanbulSlider .carousel-item img {
@@ -92,8 +110,9 @@ body {
     object-fit: cover;
     border-radius: 12px;
 }
+
 #istanbulSlider .carousel-caption {
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     border-radius: 8px;
     padding: 8px 16px;
 }
@@ -105,8 +124,15 @@ body {
 }
 
 /* YER KARTLARI */
-.place-card { border-radius: 12px; overflow: hidden; }
-.place-card img { height: 200px; object-fit: cover; }
+.place-card {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.place-card img {
+    height: 200px;
+    object-fit: cover;
+}
 
 .miras-hero {
     background: linear-gradient(135deg, #0d0d1a, #1a0a2e, #0d1b3e);
@@ -114,8 +140,17 @@ body {
     padding: 80px 0 60px;
     text-align: center;
 }
-.miras-hero h1 { font-size: 2.6rem; font-weight: 700; }
-.miras-hero p  { color: #b0c4de; max-width: 640px; margin: 1rem auto 0; }
+
+.miras-hero h1 {
+    font-size: 2.6rem;
+    font-weight: 700;
+}
+
+.miras-hero p {
+    color: #b0c4de;
+    max-width: 640px;
+    margin: 1rem auto 0;
+}
 
 .stat-box {
     background: #1a1a2e;
@@ -124,8 +159,18 @@ body {
     padding: 20px;
     text-align: center;
 }
-.stat-box .number { font-size: 1.9rem; font-weight: 700; color: #7ecaf7; }
-.stat-box .label  { font-size: 0.85rem; color: #aaa; margin-top: 4px; }
+
+.stat-box .number {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: #7ecaf7;
+}
+
+.stat-box .label {
+    font-size: 0.85rem;
+    color: #aaa;
+    margin-top: 4px;
+}
 
 .highlight-box {
     background: #eaf4fb;
@@ -140,16 +185,21 @@ body {
     border-radius: 12px;
     padding: 28px;
 }
-.medusa-card h4 { color: #7ecaf7; }
+
+.medusa-card h4 {
+    color: #7ecaf7;
+}
 
 .timeline {
     border-left: 3px solid #4fc3f7;
     padding-left: 24px;
 }
+
 .timeline-item {
     margin-bottom: 24px;
     position: relative;
 }
+
 .timeline-item::before {
     content: '';
     width: 12px;
@@ -160,7 +210,11 @@ body {
     left: -30px;
     top: 5px;
 }
-.timeline-item h6 { font-weight: 700; margin-bottom: 4px; }
+
+.timeline-item h6 {
+    font-weight: 700;
+    margin-bottom: 4px;
+}
 
 .interest-hero {
     background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
@@ -168,8 +222,17 @@ body {
     padding: 80px 0 60px;
     text-align: center;
 }
-.interest-hero h1 { font-size: 2.6rem; font-weight: 700; }
-.interest-hero p  { color: #c0b8f0; max-width: 640px; margin: 1rem auto 0; }
+
+.interest-hero h1 {
+    font-size: 2.6rem;
+    font-weight: 700;
+}
+
+.interest-hero p {
+    color: #c0b8f0;
+    max-width: 640px;
+    margin: 1rem auto 0;
+}
 
 .bci-card {
     border: none;
@@ -179,21 +242,29 @@ body {
     padding: 20px 24px;
     margin-bottom: 16px;
 }
-.bci-card h5 { color: #4a148c; }
+
+.bci-card h5 {
+    color: #4a148c;
+}
 
 /* API MAKALE KARTLARI */
 .paper-card {
     border: none;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s, box-shadow 0.3s;
     height: 100%;
 }
+
 .paper-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.14);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.14);
 }
-.paper-card .card-body { padding: 20px; }
+
+.paper-card .card-body {
+    padding: 20px;
+}
+
 .paper-card .badge-api {
     background: #7c4dff;
     color: #fff;
@@ -201,11 +272,13 @@ body {
     padding: 3px 8px;
     border-radius: 20px;
 }
+
 .paper-card .authors {
     font-size: 0.82rem;
     color: #888;
     margin: 6px 0;
 }
+
 .paper-card .abstract {
     font-size: 0.88rem;
     color: #555;
@@ -215,14 +288,20 @@ body {
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+
 .paper-card .card-footer {
     background: transparent;
     border-top: 1px solid #f0f0f0;
     padding: 12px 20px;
 }
 
-#loading-spinner { display: none; }
-#error-msg { display: none; }
+#loading-spinner {
+    display: none;
+}
+
+#error-msg {
+    display: none;
+}
 
 .api-source-note {
     background: #ede7f6;
@@ -230,6 +309,80 @@ body {
     padding: 10px 16px;
     font-size: 0.85rem;
     color: #4a148c;
+}
+
+.contact-hero {
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+    color: #fff;
+    padding: 70px 0 50px;
+    text-align: center;
+}
+
+.contact-hero h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+
+.contact-hero p {
+    color: #b0c4de;
+    max-width: 500px;
+    margin: 1rem auto 0;
+}
+
+.form-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
+    padding: 36px;
+}
+
+.btn-native {
+    background-color: #1a1a2e;
+    color: #fff;
+    border: none;
+}
+
+.btn-native:hover {
+    background-color: #2d2d5e;
+    color: #fff;
+}
+
+.btn-vue {
+    background-color: #42b883;
+    color: #fff;
+    border: none;
+}
+
+.btn-vue:hover {
+    background-color: #33a06f;
+    color: #fff;
+}
+
+.badge-method {
+    font-size: 0.7rem;
+    padding: 3px 8px;
+    border-radius: 20px;
+    vertical-align: middle;
+}
+
+.badge-js {
+    background: #f7df1e;
+    color: #333;
+}
+
+.badge-vue {
+    background: #42b883;
+    color: #fff;
+}
+
+.error-text {
+    color: #dc3545;
+    font-size: 0.82rem;
+    margin-top: 3px;
+}
+
+.is-error {
+    border-color: #dc3545 !important;
 }
 
 /* FOOTER */
