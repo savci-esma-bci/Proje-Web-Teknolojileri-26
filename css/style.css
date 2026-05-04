@@ -385,6 +385,25 @@ body {
     border-color: #dc3545 !important;
 }
 
+.form-control:hover,
+.form-select:hover {
+    border-color: #6b7280;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); 
+    transition: all 0.3s ease; 
+}
+
+.form-check-input:hover {
+    border-color: #6b7280;
+    cursor: pointer; 
+    transition: all 0.3s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #4f46e5; 
+    box-shadow: 0 0 0 0.25rem rgba(79, 70, 229, 0.25); 
+}
+
 /* FOOTER */
 footer {
     background-color: #1a1a2e;
