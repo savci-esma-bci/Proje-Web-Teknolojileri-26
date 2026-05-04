@@ -1,8 +1,83 @@
+// Native JS hata temizleme yardimci fonksiyonu
+function nativeHatalariTemizle() {
+    document.querySelectorAll('.native-error').forEach(el => el.remove());
+    document.querySelectorAll('.is-error').forEach(el => el.classList.remove('is-error'));
+}
+
+// inputa yazilmaya baslaninca hata fade olup gitsin
+document.addEventListener('DOMContentLoaded', function () {
+    const izlenenAlanlar = ['adSoyad', 'eposta', 'telefon', 'mesaj'];
+
+    izlenenAlanlar.forEach(function (id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+
+        el.addEventListener('input', function () {
+            // hata stillerini kaldir
+            el.classList.remove('is-error');
+
+            // A] Native hatayi fade ile kaldir
+            const nativeErr = el.parentNode.querySelector('.native-error');
+            if (nativeErr) {
+                nativeErr.style.transition = 'opacity 0.4s';
+                nativeErr.style.opacity = '0';
+                setTimeout(() => nativeErr.remove(), 400);
+            }
+
+            // B] Vue hatasini fade ile kaldir
+            if (vueApp && vueApp.vueErrors && vueApp.vueErrors[id]) {
+                const vueErr = el.parentNode.querySelector('.vue-error') || el.parentNode.querySelector('.error-text');
+
+                if (vueErr) {
+                    vueErr.style.transition = 'opacity 0.4s ease';
+                    vueErr.style.opacity = '0';
+                    setTimeout(() => {
+                        vueApp.vueErrors[id] = '';
+                    }, 400);
+                } else {
+                    vueApp.vueErrors[id] = '';
+                }
+            }
+        });
+    });
+
+    // select icin ayri dinleyici
+    const konu = document.getElementById('konu');
+    if (konu) {
+        konu.addEventListener('change', function () {
+            konu.classList.remove('is-error');
+            
+            // select icin Native hatai fade ile kaldir
+            const nativeErr = konu.parentNode.querySelector('.native-error');
+            if (nativeErr) {
+                nativeErr.style.transition = 'opacity 0.4s';
+                nativeErr.style.opacity = '0';
+                setTimeout(() => nativeErr.remove(), 400);
+            }
+
+            // select icin Vue hatasini fade ile kaldir
+            if (vueApp && vueApp.vueErrors && vueApp.vueErrors.konu) {
+                const vueErr = konu.parentNode.querySelector('.vue-error') || konu.parentNode.querySelector('.error-text');
+                if (vueErr) {
+                    vueErr.style.transition = 'opacity 0.4s ease';
+                    vueErr.style.opacity = '0';
+                    setTimeout(() => {
+                        vueApp.vueErrors.konu = '';
+                    }, 400);
+                } else {
+                    vueApp.vueErrors.konu = '';
+                }
+            }
+        });
+    }
+});
+
 function nativeValidate() {
     let valid = true;
 
-    document.querySelectorAll('.native-error').forEach(el => el.remove());
-    document.querySelectorAll('.is-error').forEach(el => el.classList.remove('is-error'));
+    // Native ve Vue hatalarini temizle
+    nativeHatalariTemizle();
+    vueApp.vueErrors = {};
 
     function showError(fieldId, msg) {
         const field = document.getElementById(fieldId);
@@ -46,7 +121,7 @@ function nativeValidate() {
 
 const { createApp } = Vue;
 
-createApp({
+const vueApp = createApp({
     data() {
         return {
             submitted: false,
@@ -65,6 +140,10 @@ createApp({
     methods: {
         vueValidate() {
             this.vueErrors = {};
+
+            // Native JS hatalarini da temizle
+            nativeHatalariTemizle();
+
             let valid = true;
 
             if (!this.form.adSoyad.trim()) {
