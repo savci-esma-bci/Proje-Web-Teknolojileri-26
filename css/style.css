@@ -242,11 +242,19 @@ img.rounded-3:hover {
 /* =========================================
    SEHRIM SLIDER VE KARTLARI
    ========================================= */
+
+/* --- SLIDER KISMI --- */
+
+#istanbulSlider .carousel-inner {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
 #istanbulSlider .carousel-item img {
     height: 420px;
     object-fit: cover;
-    border-radius: 16px;
-    transition: transform 5s linear; /* Resimlere yavas zoom efekti */
+    transition: transform 6s linear; 
 }
 
 #istanbulSlider .carousel-item.active img {
@@ -254,19 +262,99 @@ img.rounded-3:hover {
 }
 
 #istanbulSlider .carousel-caption {
-    background: rgba(15, 23, 42, 0.7);
-    backdrop-filter: blur(5px);
-    border-radius: 12px;
-    padding: 15px 20px;
-    border: 1px solid rgba(52, 211, 153, 0.2);
-    bottom: 30px;
+    background: linear-gradient(to top, rgba(2, 6, 23, 0.95) 0%, rgba(15, 23, 42, 0.7) 50%, transparent 100%);
+    border: none;
+    backdrop-filter: none;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 60px 20px 25px; 
 }
 
 #istanbulSlider .carousel-caption h5 {
     color: var(--accent-green);
-    font-weight: 700;
+    font-weight: 800;
+    font-size: 1.6rem;
+    text-shadow: 
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000,
+         0px  4px 10px rgba(0,0,0,0.9);
+    margin-bottom: 5px;
 }
 
+#istanbulSlider .carousel-caption p {
+    color: #f8fafc;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-shadow: 
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000,
+         0px  2px 5px rgba(0,0,0,0.9);
+    margin-bottom: 20px; 
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: transparent !important;
+    border: none !important;
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    filter: drop-shadow(0px 0px 8px rgba(0, 0, 0, 0.9));
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+    background-color: transparent !important;
+    transform: scale(1.2);
+    filter: drop-shadow(0px 0px 10px var(--accent-green));
+}
+
+.carousel-indicators {
+    bottom: 5px;
+}
+
+.carousel-indicators [data-bs-target] {
+    position: relative; 
+    background-color: #fff;
+    height: 4px;
+    border-radius: 4px;
+    opacity: 0.5;
+    border: none;
+    width: 20px;
+    margin: 0 4px;
+    transition: width 0.3s ease, opacity 0.3s ease; 
+    overflow: hidden;
+}
+
+.carousel-indicators .active {
+    opacity: 1;
+    width: 55px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.carousel-indicators .active::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: var(--accent-green);
+    box-shadow: 0 0 10px var(--accent-glow);
+    border-radius: 4px;
+    animation: fillBar 5000ms linear forwards;
+}
+
+@keyframes fillBar {
+    0%   { width: 0%; }
+    100% { width: 100%; }
+}
+
+/* KARTLAR */
 .info-badge, .stat-box {
     background: var(--bg-surface);
     border-radius: 16px;
@@ -305,8 +393,37 @@ img.rounded-3:hover {
 }
 
 .kiz-kulesi-card {
-    border-left: 5px solid var(--accent-teal);
-    background: var(--bg-surface);
+    background: var(--bg-surface) !important;
+    border-left: 5px solid var(--accent-teal) !important;
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+}
+
+.kiz-kulesi-card h4 {
+    color: var(--accent-green);
+    font-weight: 700;
+}
+
+.kiz-kulesi-card p, 
+.kiz-kulesi-card li {
+    color: #e2e8f0 !important;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.kiz-kulesi-card ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.kiz-kulesi-card li::before {
+    content: "•";
+    color: var(--accent-teal);
+    font-weight: bold;
+    display: inline-block; 
+    width: 1em;
+    margin-left: 0;
 }
 
 /* =========================================
