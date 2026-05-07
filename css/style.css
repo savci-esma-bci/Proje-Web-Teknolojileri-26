@@ -494,6 +494,66 @@ article a:hover {
 .error-text { color: #f87171; font-size: 0.85rem; margin-top: 5px; animation: fadeInUp 0.3s ease; }
 .is-error { border-color: #f87171 !important; box-shadow: 0 0 0 4px rgba(248, 113, 113, 0.15) !important; }
 
+/* =========================================
+   FORM SONUC SAYFASI (form-isle.php)
+   ========================================= */
+
+.form-result-body {
+    background: var(--gradient-hero);
+    background-size: 200% 200%;
+    animation: gradientBG 15s ease infinite; 
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.result-container {
+    width: 100%;
+    max-width: 650px;
+    background: var(--bg-surface);
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    padding: 40px 36px;
+    border-top: 4px solid var(--accent-green);
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.data-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.data-item {
+    padding: 15px 0;
+    border-bottom: 1px solid #334155;
+    display: flex;
+    flex-direction: column;
+}
+
+.data-item:last-child {
+    border-bottom: none;
+}
+
+.data-label {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+.data-value {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.data-value.highlight {
+    color: var(--accent-green);
+}
+
 /* LOGIN / AUTH */
 .auth-body {
     background: var(--gradient-hero-alt);
@@ -528,6 +588,17 @@ article a:hover {
         margin: 10px;
     }
 }
+
+/* =========================================
+   LOGIN RESULT
+   ========================================= */
+.auth-result-body {
+            background: linear-gradient(135deg, #020617, #0f172a, #064e3b);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+}    
 
 /* =========================================
    BUTONLAR
