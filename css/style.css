@@ -1,4 +1,55 @@
-/* GENEL */
+/* =========================================
+   GENEL CSS DEGISKENLERI
+   ========================================= */
+:root {
+    --bg-main: #0f172a;
+    --bg-surface: #1e293b;     /* Kartlar icin bir acik ton */
+    --bg-surface-hover: #334155; 
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    
+    --accent-green: #34d399;
+    --accent-teal: #2dd4bf;
+    --accent-glow: rgba(52, 211, 153, 0.4);
+    
+    --gradient-hero: linear-gradient(135deg, #020617 0%, #0f172a 50%, #064e3b 100%);
+    --gradient-hero-alt: linear-gradient(135deg, #0f172a, #0f3460, #115e59);
+}
+
+/* =========================================
+   ANIMASYONLAR (KEYFRAMES)
+   ========================================= */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(52, 211, 153, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+}
+
+/* =========================================
+   GENEL HTML VE SIFIRLAMA
+   ========================================= */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,470 +58,538 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8f9fa;
-    color: #212529;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    overflow-x: hidden;
 }
 
-/* NAVBAR */
+section {
+    padding-top: 100px !important;
+    padding-bottom: 100px !important;
+}
+
+/* BOOTSTRAP OVERRIDES */
+.bg-white { background-color: var(--bg-main) !important; }
+.text-muted { color: var(--text-secondary) !important; }
+.border-bottom { border-color: #334155 !important; }
+h1, h2, h3, h4, h5, h6 { color: var(--text-primary); }
+
+/* =========================================
+   NAVBAR VE MOBIL MENU
+   ========================================= */
 .navbar {
-    background-color: #1a1a2e;
+    background-color: rgba(15, 23, 42, 0.85) !important;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    animation: slideDown 0.6s ease-out;
+    width: 100%;
+    z-index: 1050;
 }
 
 .navbar-brand {
-    font-weight: 700;
-    font-size: 1.4rem;
-    color: #e0e0e0 !important;
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--accent-green) !important;
     letter-spacing: 1px;
+    text-shadow: 0 0 15px var(--accent-glow);
+    transition: transform 0.3s;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
 }
 
 .nav-link {
-    color: #c0c0c0 !important;
-    transition: color 0.3s;
+    color: var(--text-secondary) !important;
+    transition: all 0.3s ease;
+    position: relative;
+    font-weight: 500;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 2px;
+    left: 50%;
+    background-color: var(--accent-green);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 80%;
 }
 
 .nav-link:hover,
 .nav-link.active {
-    color: #ffffff !important;
+    color: var(--text-primary) !important;
 }
 
-/* HERO (home) */
-.hero-section {
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+/* Collapse Menu Butonu ve Ikonu Rengi */
+.navbar-toggler {
+    border-color: rgba(52, 211, 153, 0.4) !important; 
+}
+
+.navbar-toggler-icon {
+    /* Bootstrap in siyah ikonunu beyaz renge ceviren CSS filtresi */
+    filter: invert(1) brightness(200%); 
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.25rem var(--accent-glow) !important;
+}
+
+/* Mobil Menu Acildiginda Icerik Duzeni */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background-color: var(--bg-main) !important; /* Arka plani tamamen koyu yapip karismayi onler */
+        padding: 15px 25px;
+        border-radius: 12px;
+        border: 1px solid rgba(52, 211, 153, 0.2);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+        margin-top: 15px;
+    }
+
+    /* Mobilde uzun alt cizgiyi (underline) duzeltme */
+    .nav-link::after {
+        left: 0 !important;
+        transform: none !important;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+        width: 35px !important; /* Cizgi boydan boya degil, sadece kelimenin altinda olsn */
+    }
+
+    .nav-item {
+        margin-bottom: 12px;
+        text-align: left;
+    }
+}
+
+/* =========================================
+   HERO BOLUMLERI
+   ========================================= */
+.hero-section, .city-hero, .miras-hero, .interest-hero, .contact-hero {
+    background: var(--gradient-hero);
+    background-size: 200% 200%;
+    animation: gradientBG 10s ease infinite;
     color: #fff;
-    padding: 100px 0 80px;
     text-align: center;
+    border-bottom: 1px solid rgba(52, 211, 153, 0.15);
 }
 
-.hero-section h1 {
-    font-size: 2.8rem;
-    font-weight: 700;
+/* Hero paddings */
+.hero-section { padding: 100px 0 80px; }
+.city-hero, .miras-hero, .interest-hero { padding: 80px 0 60px; }
+.contact-hero { padding: 70px 0 50px; }
+
+.hero-section h1, .city-hero h1, .miras-hero h1, .interest-hero h1, .contact-hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
     margin-bottom: 1rem;
+    color: var(--accent-green);
+    animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-.hero-section p {
+.hero-section p, .city-hero p, .miras-hero p, .interest-hero p, .contact-hero p {
     font-size: 1.15rem;
-    color: #b0c4de;
-    max-width: 600px;
+    color: var(--text-secondary);
+    max-width: 640px;
     margin: 0 auto 2rem;
+    opacity: 0;
+    animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.2s;
 }
 
-/* CARDS */
-.card {
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s, box-shadow 0.3s;
+/* =========================================
+   KARTLAR VE ICERIK
+   ========================================= */
+.card, .form-card {
+    background-color: var(--bg-surface);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-body {
+    padding: 2rem !important;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px);
+    border-color: var(--accent-green);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 15px var(--accent-glow);
 }
 
-.city-hero {
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    color: #fff;
-    padding: 80px 0 60px;
-    text-align: center;
+.card h5, .card-title {
+    color: var(--accent-teal);
+    font-weight: 600;
 }
 
-.city-hero h1 {
-    font-size: 2.8rem;
-    font-weight: 700;
+/* Resimlere Hover Efekti */
+img.rounded-3 {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+img.rounded-3:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px var(--accent-glow) !important;
 }
 
-.city-hero p {
-    color: #b0c4de;
-    max-width: 620px;
-    margin: 1rem auto 0;
-}
-
-.info-badge {
-    background: #1a1a2e;
-    color: #e0e0e0;
-    border-radius: 12px;
-    padding: 20px;
-    text-align: center;
-}
-
-.info-badge .number {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #4fc3f7;
-}
-
-.info-badge .label {
-    font-size: 0.85rem;
-    color: #aaa;
-}
-
-/* SLIDER */
+/* =========================================
+   SEHRIM SLIDER VE KARTLARI
+   ========================================= */
 #istanbulSlider .carousel-item img {
     height: 420px;
     object-fit: cover;
-    border-radius: 12px;
+    border-radius: 16px;
+    transition: transform 5s linear; /* Resimlere yavas zoom efekti */
+}
+
+#istanbulSlider .carousel-item.active img {
+    transform: scale(1.05);
 }
 
 #istanbulSlider .carousel-caption {
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 8px;
-    padding: 8px 16px;
-}
-
-/* KIZ KULESİ özel kart */
-.kiz-kulesi-card {
-    border-left: 5px solid #4fc3f7;
-    background: #f0f8ff;
-}
-
-/* YER KARTLARI */
-.place-card {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(5px);
     border-radius: 12px;
-    overflow: hidden;
+    padding: 15px 20px;
+    border: 1px solid rgba(52, 211, 153, 0.2);
+    bottom: 30px;
+}
+
+#istanbulSlider .carousel-caption h5 {
+    color: var(--accent-green);
+    font-weight: 700;
+}
+
+.info-badge, .stat-box {
+    background: var(--bg-surface);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.info-badge:hover, .stat-box:hover {
+    background: var(--bg-surface-hover);
+    transform: translateY(-5px);
+}
+
+.info-badge .number, .stat-box .number {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--accent-green);
+    animation: float 4s ease-in-out infinite;
+}
+
+.info-badge .label, .stat-box .label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-top: 5px;
 }
 
 .place-card img {
     height: 200px;
     object-fit: cover;
+    transition: transform 0.5s ease;
 }
 
-.miras-hero {
-    background: linear-gradient(135deg, #0d0d1a, #1a0a2e, #0d1b3e);
-    color: #fff;
-    padding: 80px 0 60px;
-    text-align: center;
+.place-card:hover img {
+    transform: scale(1.1);
 }
 
-.miras-hero h1 {
-    font-size: 2.6rem;
-    font-weight: 700;
+.kiz-kulesi-card {
+    border-left: 5px solid var(--accent-teal);
+    background: var(--bg-surface);
 }
 
-.miras-hero p {
-    color: #b0c4de;
-    max-width: 640px;
-    margin: 1rem auto 0;
-}
-
-.stat-box {
-    background: #1a1a2e;
-    color: #e0e0e0;
-    border-radius: 12px;
-    padding: 20px;
-    text-align: center;
-}
-
-.stat-box .number {
-    font-size: 1.9rem;
-    font-weight: 700;
-    color: #7ecaf7;
-}
-
-.stat-box .label {
-    font-size: 0.85rem;
-    color: #aaa;
-    margin-top: 4px;
-}
-
+/* =========================================
+   MIRAS - Ozel Icerik
+   ========================================= */
 .highlight-box {
-    background: #eaf4fb;
-    border-left: 5px solid #4fc3f7;
+    background: rgba(45, 212, 191, 0.1);
+    border-left: 5px solid var(--accent-teal);
     border-radius: 8px;
     padding: 20px 24px;
+    color: var(--text-primary);
 }
 
 .medusa-card {
-    background: #1a1a2e;
-    color: #e0e0e0;
-    border-radius: 12px;
+    background: var(--bg-surface);
+    border-radius: 16px;
     padding: 28px;
+    border: 1px solid rgba(255,255,255,0.05);
 }
 
 .medusa-card h4 {
-    color: #7ecaf7;
+    color: var(--accent-green);
 }
 
+/* =========================================
+   CV SAYFASI
+   ========================================= */
+article h5 {
+    color: var(--accent-green);
+    font-weight: 600;
+}
+
+article a {
+    color: var(--accent-teal);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+article a:hover {
+    color: #fff;
+    text-shadow: 0 0 10px var(--accent-glow);
+    padding-left: 5px; /* Ok efekto icin kayma */
+}
+
+/* Timeline Animasyonu */
 .timeline {
-    border-left: 3px solid #4fc3f7;
-    padding-left: 24px;
+    border-left: 3px solid var(--accent-green);
+    padding-left: 30px;
+    margin-left: 10px;
 }
 
 .timeline-item {
-    margin-bottom: 24px;
+    margin-bottom: 30px;
     position: relative;
+    transition: transform 0.3s;
+}
+
+.timeline-item:hover {
+    transform: translateX(10px);
 }
 
 .timeline-item::before {
     content: '';
-    width: 12px;
-    height: 12px;
-    background: #4fc3f7;
+    width: 16px;
+    height: 16px;
+    background: var(--bg-main);
+    border: 3px solid var(--accent-green);
     border-radius: 50%;
     position: absolute;
-    left: -30px;
-    top: 5px;
+    left: -39.5px;
+    top: 3px;
+    transition: all 0.3s;
 }
 
-.timeline-item h6 {
-    font-weight: 700;
-    margin-bottom: 4px;
+.timeline-item:hover::before {
+    background: var(--accent-green);
+    box-shadow: 0 0 15px var(--accent-glow);
 }
 
-.interest-hero {
-    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-    color: #fff;
-    padding: 80px 0 60px;
-    text-align: center;
-}
-
-.interest-hero h1 {
-    font-size: 2.6rem;
-    font-weight: 700;
-}
-
-.interest-hero p {
-    color: #c0b8f0;
-    max-width: 640px;
-    margin: 1rem auto 0;
-}
-
+/* =========================================
+   ILGI ALANLARI VE API KARTLARI
+   ========================================= */
 .bci-card {
-    border: none;
+    background: var(--bg-surface);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-left: 5px solid var(--accent-green);
     border-radius: 12px;
-    background: #f4f0ff;
-    border-left: 5px solid #7c4dff;
     padding: 20px 24px;
     margin-bottom: 16px;
+    transition: transform 0.3s;
+}
+
+.bci-card:hover {
+    transform: translateX(-10px);
+    background: var(--bg-surface-hover);
 }
 
 .bci-card h5 {
-    color: #4a148c;
+    color: var(--accent-green);
 }
 
-/* API MAKALE KARTLARI */
 .paper-card {
-    border: none;
+    background: var(--bg-surface);
+    border: 1px solid rgba(255,255,255,0.05);
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s, box-shadow 0.3s;
     height: 100%;
-}
-
-.paper-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.14);
-}
-
-.paper-card .card-body {
-    padding: 20px;
-}
-
-.paper-card .badge-api {
-    background: #7c4dff;
-    color: #fff;
-    font-size: 0.7rem;
-    padding: 3px 8px;
-    border-radius: 20px;
-}
-
-.paper-card .authors {
-    font-size: 0.82rem;
-    color: #888;
-    margin: 6px 0;
-}
-
-.paper-card .abstract {
-    font-size: 0.88rem;
-    color: #555;
-    display: -webkit-box;
-    line-clamp: 4;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.paper-card .card-footer {
-    background: transparent;
-    border-top: 1px solid #f0f0f0;
-    padding: 12px 20px;
-}
-
-#loading-spinner {
-    display: none;
-}
-
-#error-msg {
-    display: none;
-}
-
-.api-source-note {
-    background: #ede7f6;
-    border-radius: 8px;
-    padding: 10px 16px;
-    font-size: 0.85rem;
-    color: #4a148c;
-}
-
-.contact-hero {
-    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
-    color: #fff;
-    padding: 70px 0 50px;
-    text-align: center;
-}
-
-.contact-hero h1 {
-    font-size: 2.4rem;
-    font-weight: 700;
-}
-
-.contact-hero p {
-    color: #b0c4de;
-    max-width: 500px;
-    margin: 1rem auto 0;
-}
-
-.form-card {
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
-    padding: 36px;
-}
-
-.btn-native {
-    background-color: #1a1a2e;
-    color: #fff;
-    border: none;
-}
-
-.btn-native:hover {
-    background-color: #2d2d5e;
-    color: #fff;
-}
-
-.btn-vue {
-    background-color: #42b883;
-    color: #fff;
-    border: none;
-}
-
-.btn-vue:hover {
-    background-color: #33a06f;
-    color: #fff;
-}
-
-.badge-method {
-    font-size: 0.7rem;
-    padding: 3px 8px;
-    border-radius: 20px;
-    vertical-align: middle;
-}
-
-.badge-js {
-    background: #f7df1e;
-    color: #333;
-}
-
-.badge-vue {
-    background: #42b883;
-    color: #fff;
-}
-
-.error-text {
-    color: #dc3545;
-    font-size: 0.82rem;
-    margin-top: 3px;
-}
-
-.is-error {
-    border-color: #dc3545 !important;
-}
-
-.form-control:hover,
-.form-select:hover {
-    border-color: #6b7280;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); 
-    transition: all 0.3s ease; 
-}
-
-.form-check-input:hover {
-    border-color: #6b7280;
-    cursor: pointer; 
     transition: all 0.3s ease;
 }
 
-.form-control:focus,
-.form-select:focus {
-    border-color: #4f46e5; 
-    box-shadow: 0 0 0 0.25rem rgba(79, 70, 229, 0.25); 
+.paper-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-teal);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
-/* bagimsiz sayfalari ortalamak icin */
+.paper-card .card-body { padding: 20px; }
+.paper-card .card-footer { 
+    background: transparent; 
+    border-top: 1px solid #334155; 
+    padding: 15px 20px;
+}
+
+.badge-api {
+    background: rgba(45, 212, 191, 0.15);
+    color: var(--accent-teal);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    border: 1px solid rgba(45, 212, 191, 0.3);
+}
+
+.api-source-note {
+    background: rgba(52, 211, 153, 0.1);
+    color: var(--accent-green);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+}
+
+.filter-btn {
+    color: var(--text-secondary);
+    border-color: #334155;
+}
+.filter-btn:hover, .filter-btn.active {
+    background-color: var(--accent-green);
+    color: #0f172a;
+    border-color: var(--accent-green);
+}
+
+/* =========================================
+   FORM ILETISIM VE GİRİS
+   ========================================= */
+.form-card {
+    padding: 40px;
+    border-top: 4px solid var(--accent-green);
+}
+
+.form-control, .form-select {
+    background-color: #0f172a;
+    border: 1px solid #334155;
+    color: #fff;
+    border-radius: 10px;
+    padding: 12px 15px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: #1e293b;
+    border-color: var(--accent-green);
+    color: #fff;
+    box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.15);
+}
+
+.form-control::placeholder { color: #64748b; }
+
+.form-check-label { cursor: pointer; color: var(--text-secondary); }
+.form-check-input { background-color: #0f172a; border-color: #334155; }
+.form-check-input:checked {
+    background-color: var(--accent-green);
+    border-color: var(--accent-green);
+}
+
+/* Form Hata Mesajlari */
+.error-text { color: #f87171; font-size: 0.85rem; margin-top: 5px; animation: fadeInUp 0.3s ease; }
+.is-error { border-color: #f87171 !important; box-shadow: 0 0 0 4px rgba(248, 113, 113, 0.15) !important; }
+
+/* LOGIN / AUTH */
 .auth-body {
-    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+    background: var(--gradient-hero-alt);
+    background-size: 200% 200%;
+    animation: gradientBG 15s ease infinite;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     margin: 0;
 }
 
-.auth-body footer {
-    margin-top: auto; 
-}
+.auth-body footer { margin-top: auto; }
 
 .custom-card {
-    background: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    background: var(--bg-surface);
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
     padding: 40px 36px;
     width: 100%;
     max-width: 440px;
+    border-top: 4px solid var(--accent-teal);
+    animation: fadeInUp 0.6s ease-out forwards;
 }
 
-.custom-card h2, 
-.custom-card h3 {
+.custom-card h2 { color: var(--accent-green); font-weight: 800; }
+.custom-card .subtitle { color: var(--text-secondary); margin-bottom: 28px; }
+
+/* Giris kartinin mobil padding ayari */
+@media (max-width: 576px) {
+    .custom-card {
+        padding: 30px 20px;
+        margin: 10px;
+    }
+}
+
+/* =========================================
+   BUTONLAR
+   ========================================= */
+.btn-light {
+    background-color: var(--accent-green);
+    border-color: var(--accent-green);
+    color: #0f172a;
     font-weight: 700;
-    margin-bottom: 6px;
-    color: #1a1a2e;
+}
+.btn-light:hover {
+    background-color: #10b981;
+    border-color: #10b981;
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px var(--accent-glow);
 }
 
-.custom-card .subtitle {
-    color: #888;
-    font-size: 0.95rem;
-    margin-bottom: 28px;
+.btn-outline-light {
+    border-color: var(--accent-teal);
+    color: var(--accent-teal);
+    font-weight: 600;
 }
-
-.custom-card p {
-    margin-bottom: 8px;
-    color: #444;
+.btn-outline-light:hover {
+    background-color: var(--accent-teal);
+    color: #0f172a;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(45, 212, 191, 0.3);
 }
 
 .btn-custom {
-    background-color: #1a1a2e;
-    color: #ffffff;
+    background-color: var(--accent-green);
+    color: #0f172a;
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.1s ease;
+    border-radius: 10px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
 }
-
 .btn-custom:hover {
-    background-color: #2d2d5e;
-    color: #ffffff;
+    background-color: #10b981;
+    color: #fff;
+    animation: pulseGlow 1.5s infinite;
 }
+.btn-custom:active { transform: scale(0.97); }
 
-.btn-custom:active {
-    transform: scale(0.98);
-}
+.btn-native { background-color: #334155; color: #fff; border: none; }
+.btn-native:hover { background-color: #475569; color: #fff; transform: translateY(-2px); }
 
-/* FOOTER */
+.btn-vue { background-color: var(--accent-teal); color: #0f172a; border: none; }
+.btn-vue:hover { background-color: #14b8a6; color: #fff; transform: translateY(-2px); }
+
+/* =========================================
+   FOOTER
+   ========================================= */
 footer {
-    background-color: #1a1a2e;
-    color: #aaa;
+    background-color: #020617;
+    color: var(--text-secondary);
     text-align: center;
-    padding: 20px 0;
+    padding: 25px 0;
     margin-top: 60px;
-    font-size: 0.9rem;
+    border-top: 1px solid #1e293b;
 }
