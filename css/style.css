@@ -1111,6 +1111,79 @@ article a:hover {
     color: var(--accent-green);
 }
 
+.form-result-icon {
+    font-size: 4rem;
+}
+
+.form-success-title {
+    color: var(--accent-green);
+    font-weight: 800;
+}
+
+.form-subtitle {
+    color: var(--text-secondary);
+}
+
+.data-value-multiline {
+    line-height: 1.6;
+    display: inline-block;
+}
+
+.btn-return-home {
+    background-color: transparent;
+    border: 2px solid var(--accent-green);
+    color: var(--accent-green);
+    padding: 10px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-return-home:hover {
+    background-color: var(--accent-green);
+    color: var(--bg-surface);
+}
+
+/* =========================================
+   GIRIS SONUC SAYFASI (login-isle.php)
+   ========================================= */
+
+.auth-result-icon {
+    font-size: 4rem;
+}
+
+.auth-floating-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+.text-auth-success {
+    color: var(--accent-green);
+}
+
+.text-auth-white {
+    color: #ffffff;
+}
+
+.text-auth-danger {
+    color: #f87171;
+}
+
+.alert-auth-danger {
+    background: rgba(248, 113, 113, 0.1);
+    border: none;
+    color: #f87171;
+}
+
+.btn-auth-return {
+    border-color: var(--accent-green);
+    color: #34d399;
+}
+
+.btn-auth-return:hover {
+    background-color: var(--accent-green);
+    color: #000;
+}
+
 /* LOGIN / AUTH */
 .auth-body {
     background: var(--gradient-hero-alt);

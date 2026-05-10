@@ -180,6 +180,33 @@ const vueApp = createApp({
             if (valid) {
                 document.getElementById('contactForm').submit();
             }
+        },
+
+        formuTemizle() {
+            // 1. Vue'nun kendi dünyasını (State) temizliyoruz
+            this.form = {
+                adSoyad: '',
+                eposta: '',
+                telefon: '',
+                konu: '',
+                iletisimYontemi: 'farketmez',
+                ilgiAlanlari: [],
+                mesaj: ''
+            };
+            this.vueErrors = {};
+            this.submitted = false;
+
+            // 2. Native JS'in manuel olarak DOM'a bıraktığı izleri (kırmızı çerçeveleri) temizliyoruz
+            // Inputlardaki hata class'larını zorla siliyoruz
+            document.querySelectorAll('.is-error, .is-invalid').forEach(el => {
+                el.classList.remove('is-error', 'is-invalid');
+            });
+
+            // 3. Eğer Native JS error-text div'lerinin içine manuel metin (innerHTML) bastıysa, onları siliyoruz
+            // (Vue kendi v-if div'lerini zaten silecek, bu kod sadece Native'in yarattığı kalıntıları temizler)
+            document.querySelectorAll('.error-text').forEach(el => {
+                el.innerHTML = ''; 
+            });
         }
     }
 }).mount('#contactApp');

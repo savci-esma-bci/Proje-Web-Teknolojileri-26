@@ -14,7 +14,7 @@ $konuMap = [
 ];
 $konu = $konuMap[$rawKonu] ?? $rawKonu; 
 
-// iletisim MAPPING
+// ILETISIM MAPPING
 $rawIletisim = $_POST['iletisimYontemi'] ?? '';
 $iletisimMap = [
     'eposta'    => 'E-posta',
@@ -50,6 +50,7 @@ if (isset($_POST['ilgi']) && is_array($_POST['ilgi'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Başarıyla Gönderildi</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="form-result-body">
@@ -58,9 +59,9 @@ if (isset($_POST['ilgi']) && is_array($_POST['ilgi'])) {
         <div class="result-container mx-auto">
             
             <div class="text-center mb-4">
-                <div style="font-size: 3.5rem; animation: float 3s ease-in-out infinite;">📨</div>
-                <h2 class="mt-3" style="color: #34d399; font-weight: 800;">Mesajınız Alındı!</h2>
-                <p style="color: #94a3b8;">Aşağıdaki bilgiler tarafımıza başarıyla iletilmiştir.</p>
+                <div class="form-result-icon auth-floating-icon">📨</div>
+                <h2 class="mt-3 form-success-title">Mesajınız Alındı!</h2>
+                <p class="form-subtitle">Aşağıdaki bilgiler tarafımıza başarıyla iletilmiştir.</p>
             </div>
             
             <ul class="data-list mb-4">
@@ -96,15 +97,15 @@ if (isset($_POST['ilgi']) && is_array($_POST['ilgi'])) {
                 
                 <li class="data-item">
                     <span class="data-label">Mesaj İçeriği</span>
-                    <span class="data-value" style="line-height: 1.6;">
+                    <span class="data-value data-value-multiline">
                         <?php echo nl2br(htmlspecialchars($mesaj, ENT_QUOTES, 'UTF-8')); ?>
                     </span>
                 </li>
             </ul>
 
             <div class="text-center mt-5">
-                <a href="../home.html" class="btn" style="background-color: transparent; border: 2px solid #2dd4bf; color: #2dd4bf; padding: 10px 30px; border-radius: 8px; font-weight: 600; transition: all 0.3s ease;">
-                    ← Ana Sayfaya Dön
+                <a href="../home.html" class="btn btn-return-home">
+                    <i class="bi bi-arrow-left"></i> Ana Sayfaya Dön
                 </a>
             </div>
 
