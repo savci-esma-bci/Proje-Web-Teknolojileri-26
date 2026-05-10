@@ -258,7 +258,7 @@ h1, h2, h3, h4, h5, h6 { color: var(--text-primary); }
 /* =========================================
    HERO BOLUMLERI
    ========================================= */
-.hero-section, .city-hero, .miras-hero, .contact-hero {
+.hero-section, .contact-hero {
     background: var(--gradient-hero);
     background-size: 200% 200%;
     animation: gradientBG 10s ease infinite;
@@ -277,10 +277,10 @@ h1, h2, h3, h4, h5, h6 { color: var(--text-primary); }
     min-height: 90vh;
 }
 
-.city-hero, .miras-hero { padding: 80px 0 60px; }
+.city-hero { padding: 80px 0 60px; }
 .contact-hero { padding: 70px 0 50px; }
 
-.hero-section h1, .city-hero h1, .miras-hero h1, .contact-hero h1 {
+.hero-section h1, .contact-hero h1 {
     font-size: 3rem;
     font-weight: 800;
     margin-bottom: 1rem;
@@ -288,7 +288,7 @@ h1, h2, h3, h4, h5, h6 { color: var(--text-primary); }
     animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-.hero-section p, .city-hero p, .miras-hero p, .contact-hero p {
+.hero-section p, .contact-hero p {
     font-size: 1.15rem;
     color: var(--text-secondary);
     max-width: 640px;
@@ -297,7 +297,7 @@ h1, h2, h3, h4, h5, h6 { color: var(--text-primary); }
     animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.2s;
 }
 
-.hero-section::before, .city-hero::before, .miras-hero::before, .contact-hero::before {
+.hero-section::before, .contact-hero::before {
     content: ''; position: absolute; left: 0; right: 0; height: 2px;
     background: linear-gradient(90deg, transparent, rgba(52, 211, 153, 0.14), transparent);
     animation: scanLine 6s linear infinite; pointer-events: none; z-index: 1;
@@ -586,6 +586,17 @@ img.rounded-3:hover {
     backdrop-filter: blur(4px);
 }
 
+.location-link {
+    color: var(--accent-green, #34d399);
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.location-link:hover {
+    color: #ffffff;
+}
+
 /* =========================================
    TOOLTIP
    ========================================= */
@@ -759,7 +770,7 @@ img.rounded-3:hover {
 }
 
 .info-badge .label, .stat-box .label {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     color: var(--text-secondary);
     margin-top: 5px;
 }
@@ -851,6 +862,105 @@ article a:hover {
     padding-left: 5px; /* Ok efekto icin kayma */
 }
 
+/* CV Kartlari */
+.cv-card {
+    background-color: #0f172a;
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cv-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    border-color: rgba(52, 211, 153, 0.2);
+}
+
+.cv-section-title {
+    color: #ffffff;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cv-item-title {
+    color: var(--accent-green);
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.cv-link {
+    color: var(--accent-green);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.cv-link:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+section.cv-section {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.skills-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.skills-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    color: #e2e8f0;
+}
+
+.skills-list li::before {
+    content: "•";
+    color: var(--accent-green);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+.cv-grid-layout {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.cv-grid-left {
+    flex: 1 1 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.cv-grid-right {
+    flex: 2 1 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+@media (max-width: 992px) {
+    .cv-grid-left, .cv-grid-right {
+        flex: 1 1 100%;
+    }
+}
+
 /* Timeline Animasyonu */
 .timeline {
     border-left: 3px solid var(--accent-green);
@@ -890,7 +1000,7 @@ article a:hover {
    ILGI ALANLARI VE API KARTLARI
    ========================================= */
 
-.interest-hero {
+.interest-hero, .miras-hero, .city-hero {
     position: relative;
     padding: 100px 0;
     color: #ffffff;
@@ -916,7 +1026,9 @@ article a:hover {
 }
 
 
-.interest-hero h1, .interest-hero h2, .interest-hero p {
+.interest-hero h1, .interest-hero h2, .interest-hero p,
+.miras-hero h1, .miras-hero h2, .miras-hero p,
+.city-hero h1, .city-hero h2, .city-hero p {
     color: #ffffff;
     /* webkit stroke yazi inceltmesi yerine keskin golge */
     text-shadow: 

@@ -7,6 +7,7 @@
     <title>Şehrim – İstanbul</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -34,8 +35,9 @@
     </nav>
 
     <!-- HERO -->
-    <section class="city-hero">
-        <div class="container">
+    <section class="city-hero text-center">
+        <img src="media/hero-city.jpg" alt="Istanbul Background" class="hero-bg-img">
+        <div class="container hero-content">
             <h1>İstanbul</h1>
             <p>İki kıtayı birbirine bağlayan, tarihin derinliklerinden gelen ve hiç uyumayan şehr.</p>
         </div>
@@ -92,13 +94,14 @@
                     <button type="button" data-bs-target="#istanbulSlider" data-bs-slide-to="1"></button>
                     <button type="button" data-bs-target="#istanbulSlider" data-bs-slide-to="2"></button>
                     <button type="button" data-bs-target="#istanbulSlider" data-bs-slide-to="3"></button>
+                    <button type="button" data-bs-target="#istanbulSlider" data-bs-slide-to="4"></button>
                 </div>
 
                 <!-- SLIDER ICERIK -->
                 <div class="carousel-inner">
 
                     <div class="carousel-item active">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Bosphorus_Bridge_%28235499411%29.jpeg/960px-Bosphorus_Bridge_%28235499411%29.jpeg"
+                        <img src="media/slider-kopru.jpg"
                              class="d-block w-100" alt="Boğaz Köprüsü">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Boğaz Köprüsü</h5>
@@ -107,7 +110,7 @@
                     </div>
 
                     <div class="carousel-item">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Istanbul_K%C4%B1z_Kulesi_%2854511155871%29_%28cropped%29.jpg/500px-Istanbul_K%C4%B1z_Kulesi_%2854511155871%29_%28cropped%29.jpg"
+                        <img src="media/slider-kiz.jpg"
                              class="d-block w-100" alt="Kız Kulesi">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Kız Kulesi</h5>
@@ -116,7 +119,7 @@
                     </div>
 
                     <div class="carousel-item">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Hagia_Sophia_%28228968325%29.jpeg/960px-Hagia_Sophia_%28228968325%29.jpeg"
+                        <img src="media/slider-ayasofya.jpg"
                              class="d-block w-100" alt="Ayasofya">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Ayasofya</h5>
@@ -125,11 +128,20 @@
                     </div>
 
                     <div class="carousel-item">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Istanbul_%2834223582516%29_%28cropped%29.jpg/500px-Istanbul_%2834223582516%29_%28cropped%29.jpg"
+                        <img src="media/slider-sultan.jpg"
                              class="d-block w-100" alt="Sultanahmet">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Sultanahmet Camii</h5>
                             <p>Altı minaresiyle İstanbul silüetinin vazgeçilmezi.</p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <img src="media/hero-miras.jpg"
+                             class="d-block w-100" alt="Yerebatan Sarnıcı">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Yerebatan Sarnıcı</h5>
+                            <p>İstanbul'un derinliklerinde saklı, Bizans döneminin en büyük ve en görkemli yeraltı su deposu.</p>
                         </div>
                     </div>
 
@@ -149,7 +161,7 @@
     <!-- KIZ KULESİ ÖZEL BÖLÜM -->
     <section class="py-5 bg-white">
         <div class="container">
-            <h2 class="mb-4">💙 Kız Kulesi</h2>
+            <h2 class="mb-4"><i class="bi bi-stars"></i> Kız Kulesi</h2>
             <div class="card kiz-kulesi-card p-4 mb-3">
                 <div class="row align-items-center g-4">
                     <div class="col-md-3">
@@ -209,7 +221,7 @@
 
                 <div class="col-md-4">
                     <div class="card place-card h-100">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Istanbul_asv2020-02_img48_Galata_Tower.jpg/960px-Istanbul_asv2020-02_img48_Galata_Tower.jpg"
+                        <img src="https://muze.gen.tr/images/4%C3%973/galata-tower.webp"
                              class="card-img-top" alt="Galata Kulesi">
                         <div class="card-body">
                             <h5 class="card-title">Galata Kulesi</h5>
