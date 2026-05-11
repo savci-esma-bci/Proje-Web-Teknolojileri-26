@@ -1414,3 +1414,349 @@ footer {
     margin-top: 60px;
     border-top: 1px solid #1e293b;
 }
+
+/* =========================================
+   RESPONSIVE HELP
+   ========================================= */
+
+/* ikinci bir apple safari vakasi olmamasi adina kusuratlar .99 degil :)*/
+/* Tablet ve Alti */
+@media (max-width: 991.98px) {
+    section {
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
+    }
+    .interest-hero, .miras-hero, .city-hero {
+        padding: 60px 0 !important;
+    }
+}
+
+/* Telefonla */
+@media (max-width: 767.98px) {
+
+    .container {
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+    }
+
+    .hero-section h1, .contact-hero h1, 
+    .interest-hero h1, .miras-hero h1, .city-hero h1 {
+        font-size: 2.2rem !important;
+    }
+    .interest-hero h2, .miras-hero h2, .city-hero h2 {
+        font-size: 1.4rem !important;
+    }
+
+    .hero-avatar-wrap, .hero-avatar {
+        width: 240px !important;
+        height: 240px !important;
+    }
+    .avatar-ring { inset: -12px !important; }
+    .avatar-ring-2 { inset: -24px !important; }
+
+    .card-body, .cv-card, .form-card, .medusa-card {
+        padding: 1.5rem !important;
+    }
+
+    #istanbulSlider .carousel-item img {
+        height: 280px !important;
+    }
+    #istanbulSlider .carousel-caption {
+        padding: 30px 15px 15px !important;
+    }
+    #istanbulSlider .carousel-caption h5 {
+        font-size: 1.3rem !important;
+    }
+    #istanbulSlider .carousel-caption p {
+        font-size: 0.95rem !important;
+        margin-bottom: 10px !important;
+    }
+
+    .info-badge, .stat-box {
+        padding: 15px !important;
+    }
+    .info-badge .number, .stat-box .number {
+        font-size: 1.6rem !important;
+    }
+    .info-badge .label, .stat-box .label {
+        font-size: 0.85rem !important;
+    }
+}
+
+/* Kucuk Ekranli Telefonlar */
+@media (max-width: 575.98px) {
+    body {
+        font-size: 1.05rem !important;
+    }
+    p, .card p, .card-text {
+        font-size: 1rem !important;
+    }
+
+    .hero-avatar-wrap, .hero-avatar {
+        width: 200px !important;
+        height: 200px !important;
+    }
+
+    .result-container {
+        padding: 25px 20px !important;
+    }
+    .auth-result-icon {
+        font-size: 3rem !important;
+    }
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 767.98px) {
+    .hero-section {
+        min-height: auto !important;
+        padding: 70px 0 60px !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .interest-hero,
+    .miras-hero,
+    .city-hero {
+        padding: 60px 0 40px !important;
+    }
+
+    .interest-hero h1,
+    .miras-hero h1,
+    .city-hero h1 {
+        font-size: 1.6rem !important;
+        word-break: break-word;
+    }
+
+    .interest-hero h2,
+    .miras-hero h2,
+    .city-hero h2 {
+        font-size: 1.2rem !important;
+    }
+}
+
+/* --- CV HEADER ADRESI WRAP --- */
+@media (max-width: 575.98px) {
+    header address {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 8px !important;
+        text-align: center;
+    }
+
+    header address .d-none {
+        display: none !important;
+    }
+
+    .cv-card {
+        padding: 18px !important;
+    }
+
+    /* cv main layoutu tek sutun */
+    .row .col-lg-4,
+    .row .col-lg-8 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .form-card {
+        padding: 24px 18px !important;
+    }
+
+    /* radio butonlar ve checkboxs dikey dizilsin */
+    .d-flex.gap-4 {
+        flex-direction: column !important;
+        gap: 8px !important;
+    }
+}
+
+/* login card */
+@media (max-width: 767.98px) {
+    .custom-card {
+        padding: 24px 16px !important;
+        margin: 8px auto !important; 
+        width: 90%; 
+        display: block;
+    }
+}
+
+/* --- youtube embed --- */
+@media (max-width: 767.98px) {
+    .video-wrapper {
+        margin-top: 20px;
+    }
+
+    .fade-in-left,
+    .fade-in-right-delay {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .col-lg-5.fade-in-left,
+    .col-lg-7.fade-in-right-delay {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+/* --- SLIDER MOBIL --- */
+@media (max-width: 575.98px) {
+    #istanbulSlider .carousel-item img {
+        height: 220px !important;
+    }
+
+    #istanbulSlider .carousel-caption {
+        display: block !important;
+        padding: 20px 10px 10px !important;
+    }
+
+    #istanbulSlider .carousel-caption h5 {
+        font-size: 1rem !important;
+    }
+
+    #istanbulSlider .carousel-caption p {
+        font-size: 0.8rem !important;
+        margin-bottom: 6px !important;
+    }
+}
+
+/* --- KIZ KULESI KART */
+@media (max-width: 767.98px) {
+    .kiz-kulesi-card .row {
+        flex-direction: column;
+    }
+
+    .kiz-kulesi-card .col-md-3 {
+        text-align: center;
+    }
+
+    .kiz-kulesi-card .col-md-3 img {
+        max-width: 200px;
+    }
+}
+
+/* --- MIRAS SAYFASI */
+@media (max-width: 767.98px) {
+    .col-md-6 img.img-fluid {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* --- STAT-BOX / INFO-BADGE === */
+@media (max-width: 360px) {
+    .info-badge .number,
+    .stat-box .number {
+        font-size: 1.3rem !important;
+    }
+
+    .info-badge .label,
+    .stat-box .label {
+        font-size: 0.75rem !important;
+    }
+}
+
+/* --- BUTONLAR MOBIL ---*/
+@media (max-width: 575.98px) {
+    .hero-btns .btn,
+    .btn-lg {
+        font-size: 0.95rem !important;
+        padding: 10px 18px !important;
+    }
+
+    .hero-btns {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+}
+
+/* --- NAVBAR MOBIL --- */
+@media (max-width: 400px) {
+    .navbar-brand {
+        font-size: 1.1rem !important;
+    }
+}
+
+/* --- FOOTER MOBIL --- */
+@media (max-width: 575.98px) {
+    footer {
+        padding: 18px 16px !important;
+        font-size: 0.85rem;
+    }
+}
+
+
+@media (max-width: 575.98px) {
+    section {
+        padding-top: 48px !important;
+        padding-bottom: 48px !important;
+    }
+}
+
+/* --- BCI KARTLARI MOBIL --- */
+@media (max-width: 575.98px) {
+    .bci-card {
+        padding: 14px 16px !important;
+    }
+}
+
+/* --- (video paten) MOBIL --- */
+@media (max-width: 575.98px) {
+    .media-display-limited {
+        max-width: 100% !important;
+    }
+}
+
+/* --- PHP sonuc MOBIL --- */
+@media (max-width: 575.98px) {
+    .result-container {
+        margin-left: auto !important;
+        margin-right: auto !important;
+        margin-top: 16px !important;
+        margin-bottom: 16px !important;
+        width: 90%; 
+    }
+}
+
+/* --- TOOLTIP --- */
+@media (max-width: 767.98px) {
+    .tooltip-btn::after {
+        display: none !important;
+    }
+}
+
+/* --- OVERFLOW FIX -- */
+@media (max-width: 991.98px) {
+    .hero-avatar-wrap {
+        overflow: visible;
+    }
+}
+
+/* --- interest.html filtre butonlari wrap --- */
+@media (max-width: 575.98px) {
+    .d-flex.gap-2.flex-wrap.mb-4 {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .row.align-items-center > .col-md-6,
+    .row.align-items-center > .col-md-5,
+    .row.align-items-center > .col-md-7 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+}
