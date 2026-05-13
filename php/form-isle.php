@@ -1,4 +1,9 @@
 <?php
+if ($_SERVER["REQUEST_METHOD"] != "POST") {
+    header("Location: ../iletisim.html"); 
+    exit();
+}
+
 $adSoyad  = $_POST['adSoyad'] ?? '';
 $eposta   = $_POST['eposta'] ?? '';
 $telefon  = $_POST['telefon'] ?? '';
