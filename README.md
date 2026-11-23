@@ -9,8 +9,7 @@
 
 **Öğrenci Adı Soyadı:** Esma Nur Savcı  
 **Öğrenci Numarası:** B251210008 
-
-**Canlı Site Linki:** [https://esmanursavci.42web.io/home.html](https://esmanursavci.42web.io/home.html)  
+  
 **Github Repository Linki:** [https://github.com/savci-esma-bci/Proje-Web-Teknolojileri-26.git](https://github.com/savci-esma-bci/Proje-Web-Teknolojileri-26)
 
 ---
